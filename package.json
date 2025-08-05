@@ -23,6 +23,10 @@
     "tailwindcss": "^4.1.11",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "autoprefixer": "^10.4.20"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
