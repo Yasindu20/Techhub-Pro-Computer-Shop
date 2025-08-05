@@ -26,7 +26,7 @@ function App() {
     
     // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       setDarkMode(true);
       document.documentElement.classList.add('dark');
     }
@@ -50,7 +50,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className={`min-h-screen bg-gray-50 dark:bg-dark-bg`}>
+        <div className={`min-h-screen bg-gray-50 dark:bg-slate-900`}>
           <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <main className="pt-20">
             <Routes>
