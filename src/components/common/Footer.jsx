@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   FiFacebook, FiTwitter, FiInstagram, FiYoutube,
-  FiMail, FiPhone, FiMapPin, FiCreditCard
+  FiMail, FiPhone, FiMapPin, FiCreditCard, FiMonitor
 } from 'react-icons/fi';
 import { SiVisa, SiMastercard, SiPaypal, SiApplepay } from 'react-icons/si';
 
