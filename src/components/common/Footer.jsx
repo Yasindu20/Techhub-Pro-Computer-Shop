@@ -58,16 +58,16 @@ const Footer = () => {
               we've got you covered with top-quality products and expert services.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="social-icon">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <FiFacebook className="w-5 h-5" />
               </a>
-              <a href="#" className="social-icon">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <FiTwitter className="w-5 h-5" />
               </a>
-              <a href="#" className="social-icon">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <FiInstagram className="w-5 h-5" />
               </a>
-              <a href="#" className="social-icon">
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <FiYoutube className="w-5 h-5" />
               </a>
             </div>

@@ -3,7 +3,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import { 
-  FiGrid, FiList, FiFilter, FiSearch, FiChevronDown
+  FiGrid, FiList, FiSearch, FiChevronDown
 } from 'react-icons/fi';
 import ProductCard from '../components/products/ProductCard';
 import ProductFilters from '../components/products/ProductFilters';
@@ -26,7 +26,6 @@ const Products = () => {
   } = useSelector(state => state.products);
 
   const [viewMode, setViewMode] = useState('grid');
-  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   const sortOptions = [
     { value: 'featured', label: 'Featured' },

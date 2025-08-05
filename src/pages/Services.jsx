@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { 
   FiTool, FiCpu, FiMonitor, FiHardDrive, FiShield,
-  FiClock, FiDollarSign, FiPhone, FiMail, FiMapPin,
-  FiCheck, FiArrowRight, FiStar, FiUser
+  FiClock, FiPhone, FiMail, FiMapPin,
+  FiCheck, FiArrowRight, FiStar
 } from 'react-icons/fi';
 import { services } from '../data/services';
 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiShoppingCart, FiHeart, FiSearch, FiMenu, FiX, 
-  FiMonitor, FiCpu, FiHardDrive, FiHeadphones,
-  FiTool, FiPhone, FiMail, FiUser, FiSun, FiMoon
+  FiMonitor, FiHeadphones,
+  FiPhone, FiMail, FiUser, FiSun, FiMoon
 } from 'react-icons/fi';
 import { HiDesktopComputer } from 'react-icons/hi';
 import { GiProcessor } from 'react-icons/gi';
@@ -20,7 +20,6 @@ const Header = ({ darkMode, toggleDarkMode }) => {
   const [showCartDropdown, setShowCartDropdown] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   
-  const navigate = useNavigate();
   const cartItems = useSelector(state => state.cart.totalQuantity);
   const wishlistItems = useSelector(state => state.wishlist.items.length);
 

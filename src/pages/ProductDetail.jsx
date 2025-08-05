@@ -22,7 +22,6 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
   const [addedToCart, setAddedToCart] = useState(false);
-  const [showImageModal, setShowImageModal] = useState(false);
 
   const wishlist = useSelector(state => state.wishlist.items);
   const isInWishlist = wishlist.some(item => item.id === parseInt(id));
@@ -136,7 +135,6 @@ const ProductDetail = () => {
               )}
 
               <button
-                onClick={() => setShowImageModal(true)}
                 className="absolute top-4 right-4 p-2 bg-white/80 hover:bg-white 
                   rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                 <FiZoomIn className="w-5 h-5 text-gray-700" />

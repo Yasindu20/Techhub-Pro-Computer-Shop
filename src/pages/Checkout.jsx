@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { 
-  FiCreditCard, FiLock, FiCheck, FiAlertCircle,
+  FiCreditCard, FiLock, FiCheck,
   FiUser, FiMail, FiPhone, FiMapPin
 } from 'react-icons/fi';
 import { SiVisa, SiMastercard, SiPaypal } from 'react-icons/si';
@@ -392,11 +392,10 @@ const Checkout = () => {
                 <div className="space-y-3 mb-6 max-h-64 overflow-y-auto">
                   {items.map((item) => (
                     <div key={item.id} className="flex items-start space-x-3">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-16 h-16 object-cover rounded"
-                      />
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 
+                        rounded flex items-center justify-center text-white font-bold">
+                        {item.brand ? item.brand[0] : 'P'}
+                      </div>
                       <div className="flex-1">
                         <h4 className="text-sm font-medium text-gray-800 dark:text-white">
                           {item.name}
