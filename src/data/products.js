@@ -356,7 +356,7 @@ export const products = [
       formFactor: 'Mid Tower',
       motherboard: 'E-ATX, ATX, mATX, ITX',
       fans: '2x 180mm, 3x 140mm',
-      driveB bays: '4x 3.5", 3x 2.5"',
+      "driveB bays": '4x 3.5", 3x 2.5"',
       io: '2x USB 3.0, 1x USB-C',
     },
   },
