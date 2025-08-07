@@ -4,7 +4,7 @@ export const services = [
     title: 'Computer Repair',
     icon: '🔧',
     description: 'Expert diagnosis and repair for all computer issues',
-    price: 'Starting at $49',
+    price: 'Starting at Rs. 14,700',
     features: [
       'Free Diagnostics',
       'Hardware Troubleshooting',
@@ -22,7 +22,7 @@ export const services = [
     title: 'Laptop Repair',
     icon: '💻',
     description: 'Professional laptop repair services for all brands',
-    price: 'Starting at $59',
+    price: 'Starting at Rs. 17,700',
     features: [
       'Screen Replacement',
       'Keyboard Repair',
@@ -40,7 +40,7 @@ export const services = [
     title: 'Custom PC Building',
     icon: '🛠️',
     description: 'Build your dream PC with expert guidance',
-    price: 'Starting at $99',
+    price: 'Starting at Rs. 29,700',
     features: [
       'Component Selection Help',
       'Professional Assembly',
@@ -58,7 +58,7 @@ export const services = [
     title: 'Data Recovery',
     icon: '💾',
     description: 'Recover lost data from damaged drives',
-    price: 'Starting at $149',
+    price: 'Starting at Rs. 44,700',
     features: [
       'Hard Drive Recovery',
       'SSD Recovery',
@@ -94,7 +94,7 @@ export const services = [
     title: 'Gaming PC Optimization',
     icon: '🎮',
     description: 'Maximize your gaming performance',
-    price: 'Starting at $79',
+    price: 'Starting at Rs. 23,700',
     features: [
       'Performance Tuning',
       'Overclocking',

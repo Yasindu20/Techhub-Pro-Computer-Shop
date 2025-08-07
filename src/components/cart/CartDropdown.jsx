@@ -24,6 +24,10 @@ const CartDropdown = ({ onClose }) => {
     }
   };
 
+  const formatPrice = (price) => {
+    return `Rs. ${price.toLocaleString()}`;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95, y: -10 }}
@@ -92,11 +96,11 @@ const CartDropdown = ({ onClose }) => {
                   {/* Price */}
                   <div className="flex items-center space-x-2 mb-2">
                     <span className="font-semibold text-gray-800 dark:text-white text-sm">
-                      ${item.salePrice || item.price}
+                      {formatPrice(item.salePrice || item.price)}
                     </span>
                     {item.salePrice && item.salePrice < item.price && (
                       <span className="text-xs text-gray-400 line-through">
-                        ${item.price}
+                        {formatPrice(item.price)}
                       </span>
                     )}
                   </div>
@@ -140,16 +144,16 @@ const CartDropdown = ({ onClose }) => {
                 Subtotal:
               </span>
               <span className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white">
-                ${totalAmount.toFixed(2)}
+                {formatPrice(totalAmount)}
               </span>
             </div>
 
             {/* Shipping Notice */}
             <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-4 text-center">
-              {totalAmount >= 500 ? (
+              {totalAmount >= 150000 ? (
                 <span className="text-green-600">🎉 Free shipping applied!</span>
               ) : (
-                <span>Add ${(500 - totalAmount).toFixed(2)} more for free shipping</span>
+                <span>Add {formatPrice(150000 - totalAmount)} more for free shipping</span>
               )}
             </div>
 

@@ -44,6 +44,10 @@ const ProductCard = ({ product, viewMode = 'grid' }) => {
     ));
   };
 
+  const formatPrice = (price) => {
+    return `Rs. ${price.toLocaleString()}`;
+  };
+
   if (viewMode === 'list') {
     return (
       <motion.div
@@ -56,7 +60,7 @@ const ProductCard = ({ product, viewMode = 'grid' }) => {
           <div className="relative w-full sm:w-48 h-48 sm:h-32 overflow-hidden bg-gray-100 dark:bg-gray-800">
             <div className="w-full h-full bg-gradient-to-br from-primary-400 to-primary-600 
               flex items-center justify-center text-white text-2xl sm:text-xl font-bold">
-              {product.brand ? product.brand[0] : 'P'}
+              {product.brand ? product.brand[0] : product.name[0]}
             </div>
             
             {/* Sale Badge */}
@@ -108,15 +112,15 @@ const ProductCard = ({ product, viewMode = 'grid' }) => {
                   {product.sale ? (
                     <>
                       <span className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white">
-                        ${product.salePrice}
+                        {formatPrice(product.salePrice)}
                       </span>
                       <span className="text-sm text-gray-400 line-through">
-                        ${product.price}
+                        {formatPrice(product.price)}
                       </span>
                     </>
                   ) : (
                     <span className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white">
-                      ${product.price}
+                      {formatPrice(product.price)}
                     </span>
                   )}
                 </div>
@@ -234,15 +238,15 @@ const ProductCard = ({ product, viewMode = 'grid' }) => {
                 {product.sale ? (
                   <>
                     <span className="text-lg sm:text-2xl font-bold text-gray-800 dark:text-white">
-                      ${product.salePrice}
+                      {formatPrice(product.salePrice)}
                     </span>
                     <span className="text-sm sm:text-lg text-gray-400 line-through">
-                      ${product.price}
+                      {formatPrice(product.price)}
                     </span>
                   </>
                 ) : (
                   <span className="text-lg sm:text-2xl font-bold text-gray-800 dark:text-white">
-                    ${product.price}
+                    {formatPrice(product.price)}
                   </span>
                 )}
               </div>

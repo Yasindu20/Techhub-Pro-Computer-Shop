@@ -17,7 +17,11 @@ const Checkout = () => {
   
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const shipping = totalAmount > 500 ? 0 : 49;
+  const formatPrice = (price) => {
+    return `Rs. ${price.toLocaleString()}`;
+  };
+
+  const shipping = totalAmount > 150000 ? 0 : 14700;
   const tax = totalAmount * 0.08;
   const finalTotal = totalAmount + shipping + tax;
 
@@ -209,10 +213,10 @@ const Checkout = () => {
                     <div>
                       <label className="block text-sm font-medium text-gray-700 
                         dark:text-gray-300 mb-2">
-                        State
+                        Province
                       </label>
                       <input
-                        {...register('state', { required: 'State is required' })}
+                        {...register('state', { required: 'Province is required' })}
                         className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 
                           rounded-lg bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary-500 
                           focus:border-transparent"
@@ -225,10 +229,10 @@ const Checkout = () => {
                     <div>
                       <label className="block text-sm font-medium text-gray-700 
                         dark:text-gray-300 mb-2">
-                        ZIP Code
+                        Postal Code
                       </label>
                       <input
-                        {...register('zip', { required: 'ZIP code is required' })}
+                        {...register('zip', { required: 'Postal code is required' })}
                         className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 
                           rounded-lg bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary-500 
                           focus:border-transparent"
@@ -401,11 +405,11 @@ const Checkout = () => {
                           {item.name}
                         </h4>
                         <p className="text-sm text-gray-500">
-                          Qty: {item.quantity} × ${item.price}
+                          Qty: {item.quantity} × {formatPrice(item.price)}
                         </p>
                       </div>
                       <p className="text-sm font-medium text-gray-800 dark:text-white">
-                        ${item.totalPrice.toFixed(2)}
+                        {formatPrice(item.totalPrice)}
                       </p>
                     </div>
                   ))}
@@ -415,20 +419,20 @@ const Checkout = () => {
                 <div className="space-y-2 border-t pt-4">
                   <div className="flex justify-between text-gray-600 dark:text-gray-400">
                     <span>Subtotal</span>
-                    <span>${totalAmount.toFixed(2)}</span>
+                    <span>{formatPrice(totalAmount)}</span>
                   </div>
                   <div className="flex justify-between text-gray-600 dark:text-gray-400">
                     <span>Shipping</span>
-                    <span>{shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
+                    <span>{shipping === 0 ? 'FREE' : formatPrice(shipping)}</span>
                   </div>
                   <div className="flex justify-between text-gray-600 dark:text-gray-400">
                     <span>Tax</span>
-                    <span>${tax.toFixed(2)}</span>
+                    <span>{formatPrice(tax)}</span>
                   </div>
                   <div className="border-t pt-2 flex justify-between text-xl font-bold 
                     text-gray-800 dark:text-white">
                     <span>Total</span>
-                    <span>${finalTotal.toFixed(2)}</span>
+                    <span>{formatPrice(finalTotal)}</span>
                   </div>
                 </div>
 
