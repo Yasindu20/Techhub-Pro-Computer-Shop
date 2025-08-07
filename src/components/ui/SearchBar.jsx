@@ -90,12 +90,12 @@ const SearchBar = ({ onClose }) => {
         <input
           ref={searchRef}
           type="text"
-          placeholder="Search for products, brands, categories..."
+          placeholder="Search products..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyPress={handleKeyPress}
           onFocus={() => setShowResults(true)}
-          className="w-full pl-12 pr-12 py-4 text-lg border border-gray-300 
+          className="w-full pl-12 pr-12 py-3 sm:py-4 text-base sm:text-lg border border-gray-300 
             dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 
             focus:ring-2 focus:ring-primary-500 focus:border-transparent 
             placeholder-gray-500 dark:placeholder-gray-400"
@@ -105,7 +105,7 @@ const SearchBar = ({ onClose }) => {
           <button
             onClick={() => setQuery('')}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 
-              text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+              text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 touch-target">
             <FiX className="w-5 h-5" />
           </button>
         )}
@@ -120,7 +120,7 @@ const SearchBar = ({ onClose }) => {
             exit={{ opacity: 0, y: -10 }}
             className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-dark-card 
               rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 
-              max-h-96 overflow-y-auto z-50">
+              max-h-80 sm:max-h-96 overflow-y-auto z-50">
             
             {query && results.length > 0 ? (
               /* Search Results */
@@ -132,7 +132,7 @@ const SearchBar = ({ onClose }) => {
                   <button
                     onClick={() => handleSearch(query)}
                     className="text-sm text-primary-600 hover:text-primary-700 font-medium">
-                    View All Results
+                    View All
                   </button>
                 </div>
                 
@@ -141,17 +141,17 @@ const SearchBar = ({ onClose }) => {
                     <button
                       key={product.id}
                       onClick={() => handleResultClick(product)}
-                      className="w-full flex items-center space-x-4 p-3 hover:bg-gray-50 
-                        dark:hover:bg-gray-800 rounded-lg transition-colors text-left">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 
-                        rounded-lg flex items-center justify-center text-white font-bold">
+                      className="w-full flex items-center space-x-3 sm:space-x-4 p-3 hover:bg-gray-50 
+                        dark:hover:bg-gray-800 rounded-lg transition-colors text-left touch-target">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary-400 to-primary-600 
+                        rounded-lg flex items-center justify-center text-white font-bold text-sm">
                         {product.brand ? product.brand[0] : 'P'}
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-medium text-gray-800 dark:text-white line-clamp-1">
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-medium text-gray-800 dark:text-white line-clamp-1 text-sm sm:text-base">
                           {product.name}
                         </h4>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                           {product.category} • ${product.salePrice || product.price}
                         </p>
                       </div>
@@ -168,7 +168,7 @@ const SearchBar = ({ onClose }) => {
                   No products found for "{query}"
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-500">
-                  Try searching for something else
+                  Try different keywords
                 </p>
               </div>
             ) : (
@@ -178,7 +178,7 @@ const SearchBar = ({ onClose }) => {
                   <div className="mb-6">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="font-semibold text-gray-800 dark:text-white 
-                        flex items-center">
+                        flex items-center text-sm sm:text-base">
                         <FiClock className="mr-2 w-4 h-4" />
                         Recent Searches
                       </h3>
@@ -194,10 +194,10 @@ const SearchBar = ({ onClose }) => {
                         <button
                           key={index}
                           onClick={() => handleSearch(search)}
-                          className="w-full flex items-center space-x-3 p-2 hover:bg-gray-50 
-                            dark:hover:bg-gray-800 rounded-lg transition-colors text-left">
+                          className="w-full flex items-center space-x-3 p-2 sm:p-3 hover:bg-gray-50 
+                            dark:hover:bg-gray-800 rounded-lg transition-colors text-left touch-target">
                           <FiClock className="w-4 h-4 text-gray-400" />
-                          <span className="text-gray-700 dark:text-gray-300">{search}</span>
+                          <span className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{search}</span>
                         </button>
                       ))}
                     </div>
@@ -206,17 +206,17 @@ const SearchBar = ({ onClose }) => {
 
                 <div>
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-3 
-                    flex items-center">
+                    flex items-center text-sm sm:text-base">
                     <FiTrendingUp className="mr-2 w-4 h-4" />
                     Popular Searches
                   </h3>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {popularSearches.map((search, index) => (
                       <button
                         key={index}
                         onClick={() => handleSearch(search)}
-                        className="flex items-center space-x-2 p-2 hover:bg-gray-50 
-                          dark:hover:bg-gray-800 rounded-lg transition-colors text-left">
+                        className="flex items-center space-x-2 p-2 sm:p-3 hover:bg-gray-50 
+                          dark:hover:bg-gray-800 rounded-lg transition-colors text-left touch-target">
                         <FiTrendingUp className="w-4 h-4 text-primary-600" />
                         <span className="text-sm text-gray-700 dark:text-gray-300">
                           {search}
@@ -231,10 +231,10 @@ const SearchBar = ({ onClose }) => {
         )}
       </AnimatePresence>
 
-      {/* Backdrop for mobile */}
+      {/* Mobile Backdrop */}
       {showResults && (
         <div
-          className="fixed inset-0 bg-black/20 z-30 lg:hidden"
+          className="fixed inset-0 bg-black/20 z-30 sm:hidden"
           onClick={() => setShowResults(false)}
         />
       )}
