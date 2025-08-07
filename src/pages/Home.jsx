@@ -5,7 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { 
   FiTruck, FiShield, FiRefreshCw, FiHeadphones,
-  FiCpu, FiMonitor, FiHardDrive, FiTool, FiArrowRight
+  FiCpu, FiMonitor, FiHardDrive, FiTool, FiArrowRight,
+  FiChevronLeft, FiChevronRight
 } from 'react-icons/fi';
 import ProductCard from '../components/products/ProductCard';
 import { featuredProducts } from '../data/products';
@@ -105,8 +106,8 @@ const Home = () => {
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.hero-swiper-button-next',
+            prevEl: '.hero-swiper-button-prev',
           }}
           pagination={{ 
             clickable: true,
@@ -115,45 +116,100 @@ const Home = () => {
           }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           loop
-          className="h-full">
+          className="h-full hero-slider">
           {heroSlides.map((slide) => (
             <SwiperSlide key={slide.id}>
               <div className={`relative h-full bg-gradient-to-r ${slide.gradient}`}>
                 <div className="absolute inset-0 bg-black/40" />
-                <div className="mobile-container h-full flex items-center relative z-10 safe-area-top">
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="max-w-2xl text-white">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-                      {slide.title}
-                    </h1>
-                    <p className="text-lg sm:text-xl lg:text-2xl mb-2">{slide.subtitle}</p>
-                    <p className="text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 opacity-90">
-                      {slide.description}
-                    </p>
-                    <Link to={slide.link}>
-                      <button className="bg-white text-gray-900 px-6 py-3 sm:px-8 sm:py-4 rounded-lg 
-                        font-bold text-sm sm:text-base lg:text-lg hover:bg-gray-100 transform hover:scale-105 
-                        transition-all duration-300 shadow-xl flex items-center space-x-2 touch-target">
-                        <span>Shop Now</span>
-                        <FiArrowRight className="w-4 h-4" />
-                      </button>
-                    </Link>
-                  </motion.div>
+                
+                {/* Content Container - Mobile & Desktop Responsive */}
+                <div className="h-full flex items-center relative z-10 safe-area-top">
+                  <div className="w-full px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+                    
+                    {/* Mobile Layout (sm and below) */}
+                    <div className="block lg:hidden">
+                      <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-white px-12 sm:px-16 text-center">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                          {slide.title}
+                        </h1>
+                        <p className="text-base sm:text-lg mb-2">
+                          {slide.subtitle}
+                        </p>
+                        <p className="text-sm sm:text-base mb-6 opacity-90">
+                          {slide.description}
+                        </p>
+                        <Link to={slide.link}>
+                          <button className="bg-white text-gray-900 px-6 py-3 sm:px-8 sm:py-4 
+                            rounded-lg font-bold text-sm sm:text-base hover:bg-gray-100 
+                            transform hover:scale-105 transition-all duration-300 shadow-xl 
+                            flex items-center space-x-2 touch-target mx-auto">
+                            <span>Shop Now</span>
+                            <FiArrowRight className="w-4 h-4" />
+                          </button>
+                        </Link>
+                      </motion.div>
+                    </div>
+
+                    {/* Desktop Layout (lg and above) */}
+                    <div className="hidden lg:block">
+                      <div className="grid grid-cols-12 gap-8 items-center">
+                        {/* Left spacing for navigation arrow */}
+                        <div className="col-span-1 xl:col-span-1"></div>
+                        
+                        {/* Text Content */}
+                        <motion.div
+                          initial={{ opacity: 0, x: -50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.8 }}
+                          className="col-span-7 xl:col-span-6 text-white pl-8 pr-8">
+                          <h1 className="text-5xl xl:text-6xl font-bold mb-4 leading-tight max-w-2xl">
+                            {slide.title}
+                          </h1>
+                          <p className="text-xl xl:text-2xl mb-2 max-w-xl">
+                            {slide.subtitle}
+                          </p>
+                          <p className="text-lg mb-8 opacity-90 max-w-lg">
+                            {slide.description}
+                          </p>
+                          <Link to={slide.link}>
+                            <button className="bg-white text-gray-900 px-8 py-4 rounded-lg 
+                              font-bold text-lg hover:bg-gray-100 transform hover:scale-105 
+                              transition-all duration-300 shadow-xl flex items-center space-x-2 touch-target">
+                              <span>Shop Now</span>
+                              <FiArrowRight className="w-4 h-4" />
+                            </button>
+                          </Link>
+                        </motion.div>
+                        
+                        {/* Right spacing for navigation arrow */}
+                        <div className="col-span-4 xl:col-span-5"></div>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
             </SwiperSlide>
           ))}
           
-          {/* Custom Navigation */}
-          <div className="swiper-button-prev !left-4 !w-10 !h-10 sm:!w-12 sm:!h-12 !mt-0 
-            !top-1/2 !-translate-y-1/2 !bg-white/20 !backdrop-blur-sm !rounded-full 
-            hover:!bg-white/30 !text-white after:!text-sm sm:after:!text-base" />
-          <div className="swiper-button-next !right-4 !w-10 !h-10 sm:!w-12 sm:!h-12 !mt-0 
-            !top-1/2 !-translate-y-1/2 !bg-white/20 !backdrop-blur-sm !rounded-full 
-            hover:!bg-white/30 !text-white after:!text-sm sm:after:!text-base" />
+          {/* Custom Navigation Arrows */}
+          <div className="hero-swiper-button-prev group">
+            <div className="nav-button-inner">
+              <FiChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+            </div>
+          </div>
+          <div className="hero-swiper-button-next group">
+            <div className="nav-button-inner">
+              <FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+            </div>
+          </div>
+          
+          {/* Custom Pagination */}
+          <div className="swiper-pagination !bottom-6 sm:!bottom-8"></div>
         </Swiper>
       </section>
 
